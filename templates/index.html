@@ -1,0 +1,149 @@
+{% extends 'basic.html' %} {% block title %}AIpoint{% endblock %} {% block body %} {% load static %}
+<main class="container pb-5">
+    <div class="text-center">
+        <div class="float-left">
+            <div class="mt-5 pt-5">
+                <h1>Aipoint is Here !</h1>
+                <h3>Get along with the journey of AI</h3>
+                <p>Welcome to the AIpoint, We are creating an enthusiasts for the future of AI.</p>
+            </div>
+        </div>
+        <img src='{% static "AiPoint/images/aipoint-intro.png" %}' alt="Intro Image" class="w-50 mb-5 pb-5">
+    </div>
+</main>
+</header>
+
+<!-- ==============
+			Header Ends
+        ============== -->
+
+
+<!-- ==========
+From Below Latest Post starts
+======== -->
+<section>
+    <div class="container mt-5">
+        <h3 class="display-4">Latest Post</h3>
+        <hr>
+        <div class="row">
+        {% for i in latest_blog %}
+        {% if forloop.counter <= 3 %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.blog_name}}</h5>
+                    <h6 class="card-subtitle mc-2 text-muted">{{i.category}}</h6>
+                    <p class="card-text">{{i.desc}}</p>
+                    <a href="#">Learn More</a>
+                    <a href="#">Share</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ==========
+Latest Post Ends
+======== -->
+<!-- ==========
+From Below Featured Post starts
+======== -->
+<section>
+    <div class="container mt-5">
+        <h3 class="display-4">Featured Post</h3>
+        <hr>
+        <div class="row">
+            {% for i in blog %}
+            {% if forloop.counter <= 4 %}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.blog_name}}</h5>
+                        <h6 class="card-subtitle mc-2 text-muted">{{i.category}}</h6>
+                        <p class="card-text">{{i.desc}}</p>
+                        <a href="#">Learn More</a>
+                        <a href="#">Share</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ==========
+Featured Post Ends
+======== -->
+<!-- ==========
+From Below Most Loved Post starts
+======== -->
+<section>
+    <div class="container mt-5 mb-5">
+        <h3 class="display-4">Most Loved</h3>
+        <hr>
+        <div class="row">
+            {% for i in blog %}
+            {% if forloop.counter <= 2 %}
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.blog_name}}</h5>
+                        <h6 class="card-subtitle mc-2 text-muted">{{i.category}}</h6>
+                        <p class="card-text">{{i.desc}}</p>
+                        <a href="#">Learn More</a>
+                        <a href="#">Share</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ==========
+Most Loved Post Ends
+======== -->
+<!-- Subscribe to Newsletter Starts Here -->
+<style>
+h2.newsletter{
+    font-size: 32px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p.text-big{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button.submit{
+    width: 6rem;
+    margin: auto 0;
+    padding: 10px;
+    color: whitesmoke;
+    background-color: darkslategray;
+    border: 1px solid darkslategray;
+}
+</style>
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="newsletter"><strong>Subscribe to Newsletter</strong></h2>
+                <p class="text-big">Join us by subscribing to our newsletter and stay connected with us.</p>
+            </div>
+            <div class="col-md-8">
+                    <form class="form-group form-inline">
+                        <input type="email" placeholder="Email" class="form-control" style="border-radius: 0px;" required>
+                        <div class="input-group-prepend">
+                            <span>
+                                <button type="submit" class="btn text-light" style="border-radius: 0;">Subscribe</button>
+                            </span>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Subscribe Newsletter Ends Here -->
+{% endblock %}

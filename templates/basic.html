@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        header {
+            background-image: linear-gradient(to bottom, lightslategray, lightsteelblue, white);
+        }
+        
+        strong.text-secondary {
+            font-family: cursive;
+        }
+        
+        a.nav-link {
+            color: darkslategray;
+            margin: 5px;
+            transition: all 0.4s ease-in-out;
+        }
+        
+        a.nav-link:hover {
+            border-radius: 40px;
+            box-shadow: 2px 2px 15px black;
+        }
+        .btn{
+            background-color: darkslategray;
+            color: whitesmoke;
+            outline: none;
+            border-radius: 40px;
+        }
+        input[type=text]{
+            border: none;
+            border-bottom: 1px solid slategray;
+            padding: 10px;
+            outline: none;
+            transition: 0.4s all ease-in-out;
+        }
+        input[type=text]:focus{
+            border-bottom: 2px solid darkslategray;
+        }
+    </style>
+    {% block style %}{% endblock %}
+
+</head>
+
+<body>
+    <!-- ==============
+			Header Starts
+		============== -->
+    <header class="px-5">
+        <nav class="navbar navbar-expand-lg mb-5">
+            <a class="navbar-brand" href="/">
+				{% load static %}
+                <img src='{% static "AiPoint/images/logo4.png" %}' style="height: 100px; width: 100px;">
+                <strong class="animated slideInLeft delay-1s" style="color: darkslategray;">Aipoint</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"><i class="fa fa-align-right"></i></span>
+			</button>
+
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="blogsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Blogs
+						</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="blogsDropdown">
+                            <div class="text-center">
+                            <input type="text" id="searchBlogs" placeholder="Search..." onkeyup="searchBlog()" autocomplete="off">
+                            <a href="blogs/">See all blogs</a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <ul id="myInput" class="list-group list-group-flush">
+                            {% for i in blog %}
+                            <li class="list-group-item"><a class="dropdown-item" href="#">{{i.blog_name}}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">Log In</a>
+                            <a class="dropdown-item" href="#">Sign Up</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% block body %}{% endblock %}
+        <!-- =====END the header tag first in your template===== -->
+        <!-- =========Footer Starts here============= -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>About us</h1>
+                    <p class="mb-3">In Aipoint we wish to create enthusiasts in the promising field of Artificial Inteligence</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;">Our Services</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;">Our Team</a>
+                        </li>
+                    </ul>
+                    <p>&copy; Copyright 2020 All rights reserved by <span style="color:lightseagreen">Aipoint</span></p>
+                    
+                </div>
+                <div class="col-sm-3">
+                    <h4>Newsletter</h4>
+                    <p>Stay Updated</p>
+                    <form class="form-group form-inline">
+                        <input type="email" placeholder="Email" class="form-control" style="border-radius: 40px;" required>
+                        <div class="input-group-prepend">
+                            <span>
+                                <a class="btn btn-newsletter"><i class="fa fa-arrow-right"></i></a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Follow us</h4>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" style="color: lightseagreen;"><i class="fab fa-twitter"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <!-- JQuery -->
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js "></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js "></script>
+        <script>
+            $(document).ready(() => {
+                // SideNav Initialization
+                $(".button-collapse ").sideNav();
+                new WOW().init();
+            })
+        </script>
+        <script>
+            document.getElementById('myInput').style.display = 'none';
+            const searchBlog = () => {
+
+                let filter = document.getElementById('searchBlogs').value.toUpperCase();
+                let ul = document.getElementById('myInput');
+                let li = ul.getElementsByTagName('li');
+
+                if (filter!=''&& filter!= ' '){
+
+                    for(var i=0; i<li.length; i++){
+                        let a =li[i].getElementsByTagName('a')[0];
+
+                        let textValue = a.texContent || a.innerHTML ;
+
+                        if (textValue.toUpperCase().indexOf(filter) > -1){
+                            li[i].style.display = 'block';
+                            document.getElementById('myInput').style.display = 'block';
+                        }else{
+                            li[i].style.display = 'none';
+                        }
+                    }
+                }else{
+                    document.getElementById('myInput').style.display = 'none'
+                }
+
+            }
+        </script>
+        {% block script %}{% endblock %}
+</body>
+
+</html>
